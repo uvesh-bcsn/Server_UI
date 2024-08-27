@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "455769024189",
+    "project_id": "server-ui-d4c0b",
+    "storage_bucket": "server-ui-d4c0b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:455769024189:android:091b1caa6632a18dc079d4",
+        "android_client_info": {
+          "package_name": "com.serverui"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCirGOfBKe-QZFXtHVbLyuIQ9QOLcsbzbE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

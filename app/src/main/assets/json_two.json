@@ -1,0 +1,89 @@
+{
+  "type": "dashboard-content-view",
+  "children": [
+    {
+      "type": "home-balance-widget-view",
+      "children": [
+        {
+          "type": "home-balance",
+          "data": {
+            "text": "ixfi_points",
+            "balance": "10 Point",
+            "position": 1,
+            "image": "ic_wallet_curve_home",
+            "bgcolor": ["#ECE8FF"]
+          }
+        },
+        {
+          "type": "home-balance",
+          "data": {
+            "text": "ixfi_wallet",
+            "balance": "$100",
+            "position": 2,
+            "image": "ic_wallet_curve_home",
+            "bgcolor": ["#ECE8FF"]
+          }
+        }
+      ]
+    },
+    {
+      "type": "ixfi-option-widget-view",
+      "children": [
+        {
+          "type": "ixfi-options",
+          "data": {
+            "text": "Dashboard",
+            "position": 1,
+            "image": "buy_crypto_home_icon",
+            "bgcolor": ["#ECE8FF", "#ECE8FF"]
+          }
+        },
+        {
+          "type": "ixfi-options",
+          "dataModelType": "",
+          "data": {
+            "text": "Rewards",
+            "position": 2,
+            "image": "rewards_home_icon",
+            "bgcolor": ["#ECE8FF", "#ECE8FF"]
+          }
+        },
+        {
+          "type": "ixfi-options",
+          "data": {
+            "text": "Steps",
+            "position": 3,
+            "image": "convert_home_icon",
+            "bgcolor": ["#ECE8FF", "#ECE8FF"]
+          }
+        },
+        {
+          "type": "ixfi-options",
+          "data": {
+            "text": "Cards",
+            "position": 4,
+            "image": "ixficard_home_icon",
+            "bgcolor": ["#ECE8FF", "#3461FF"]
+          }
+        },
+        {
+          "type": "slide_card",
+          "data": [
+            {
+              "name": "card",
+              "image": "https://picsum.photos/id/12/200/300"
+            },
+            {
+              "name": "step",
+              "image": "https://picsum.photos/id/13/200/300"
+            },
+            {
+              "name": "farming",
+              "image": "https://picsum.photos/id/14/200/300"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
