@@ -1,9 +1,11 @@
 package com.serverui.ui.approaches
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -29,7 +31,9 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -43,6 +47,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -76,9 +81,65 @@ fun JsonUI_Three(view: DashboardContentView) {
             when (widget.type) {
                 "home-balance-widget-view" -> HomeBalanceWidgetView(widget.children!!)
                 "ixfi-option-widget-view" -> IxfiOptionWidgetView(widget.children!!)
-                // Add more types as necessary
+                "navigation-widget-view" -> NavigationWidgetView(widget.children!!)
             }
         }
+    }
+}
+
+@Composable
+fun NavigationWidgetView(children: List<WidgetView>) {
+    Row(
+        modifier = Modifier
+            .horizontalScroll(rememberScrollState())
+            .padding(horizontal = 10.dp)
+            .background(Color.White)
+    ) {
+        children.forEach { widget ->
+            if (widget.type == "navigation-widget") {
+                NavigationWidget(widget.data!!)
+            }
+        }
+    }
+}
+
+@Composable
+fun NavigationWidget(data: WidgetData) {
+    ConstraintLayout(
+        modifier = Modifier
+            .wrapContentHeight()
+            .padding(start = 10.dp, end = 10.dp, top = 18.dp, bottom = 7.dp)
+    ) {
+        val (navIcon, navText) = createRefs()
+
+        AsyncImage(
+            model = stringImage(data.image ?: ""),
+            contentDescription = null,
+            modifier = Modifier
+                .size(61.dp)
+                .constrainAs(navIcon) {
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                    top.linkTo(parent.top)
+                }
+                .clip(CircleShape)
+                .background(Color(0xFFF9F9F9), CircleShape),
+            contentScale = ContentScale.Fit
+        )
+
+        Text(
+            text = data.text ?: "",
+            color = Color(0xff000619),
+            fontSize = 11.sp,
+            modifier = Modifier
+                .constrainAs(navText) {
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                    top.linkTo(navIcon.bottom)
+                }
+                .padding(top = 5.dp),
+            maxLines = 2
+        )
     }
 }
 

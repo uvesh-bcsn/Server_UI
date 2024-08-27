@@ -296,6 +296,30 @@ fun stringImage(img: String): Int {
         "ixficard_home_icon" -> {
             R.drawable.ixficard_home_icon
         }
+        "ic_dashboard_menu_new" -> {
+            R.drawable.ic_dashboard_menu_new
+        }
+        "img_deposit_money" -> {
+            R.drawable.img_deposit_money
+        }
+        "ic_referral_menu_new" -> {
+            R.drawable.ic_referral_menu_new
+        }
+        "ic_fee_structure_menu_new" -> {
+            R.drawable.ic_fee_structure_menu_new
+        }
+        "ic_blog_menu_new" -> {
+            R.drawable.ic_blog_menu_new
+        }
+        "ic_news_menu_new" -> {
+            R.drawable.ic_news_menu_new
+        }
+        "ic_help_center_menu" -> {
+            R.drawable.ic_help_center_menu
+        }
+        "ic_history_menu_new" -> {
+            R.drawable.ic_history_menu_new
+        }
         else -> {
             0
         }

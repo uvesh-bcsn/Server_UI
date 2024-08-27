@@ -45,7 +45,7 @@ fun Json_Three() {
 
     LaunchedEffect(key1 = Unit) {
         data = Gson().fromJson(
-            getJsonFromAssets(context, "home_sample.json"),
+            getJsonFromAssets(context, "home_sample_new.json"),
             DashboardContentView::class.java
         )
     }
