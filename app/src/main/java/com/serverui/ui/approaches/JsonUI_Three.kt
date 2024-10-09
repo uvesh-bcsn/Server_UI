@@ -1,7 +1,7 @@
 package com.serverui.ui.approaches
 
+import android.app.Activity
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -31,9 +32,7 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -47,8 +46,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -56,12 +54,17 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.core.graphics.toColorInt
+import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.serverui.R
 import com.serverui.model.home_sample.Banner
 import com.serverui.model.home_sample.DashboardContentView
 import com.serverui.model.home_sample.WidgetData
 import com.serverui.model.home_sample.WidgetView
+import com.serverui.navigation.Route
+import com.serverui.navigation.getRoute
+import com.serverui.ui.debug.debugBorder
+import com.serverui.ui.screen.BuyCrypto
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlin.coroutines.cancellation.CancellationException
@@ -69,20 +72,47 @@ import kotlin.coroutines.cancellation.CancellationException
 @ExperimentalFoundationApi
 @ExperimentalLayoutApi
 @Composable
-fun JsonUI_Three(view: DashboardContentView) {
-    Column(
+fun JsonUI_Three(view: DashboardContentView, navController: NavHostController) {
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .verticalScroll(rememberScrollState())
             .background(Color(view.data.bgcolor[0].toColorInt()))
-            .systemBarsPadding()
     ) {
-        view.children.forEach { widget ->
-            when (widget.type) {
-                "home-balance-widget-view" -> HomeBalanceWidgetView(widget.children!!)
-                "ixfi-option-widget-view" -> IxfiOptionWidgetView(widget.children!!)
-                "navigation-widget-view" -> NavigationWidgetView(widget.children!!)
+        AsyncImage(
+            model = view.data.image,
+            contentDescription = null,
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+                .systemBarsPadding()
+                .padding(top = 30.dp)
+        ) {
+            view.children.forEach { widget ->
+                when (widget.type) {
+                    "banner-view" -> BannerView(widget.children!!)
+                    "home-balance-widget-view" -> HomeBalanceWidgetView(widget.children!!)
+                    "ixfi-option-widget-view" -> IxfiOptionWidgetView(widget.children!!, navController)
+                    "navigation-widget-view" -> NavigationWidgetView(widget.children!!)
+                }
             }
+        }
+    }
+}
+
+@Composable
+fun BannerView(children: List<WidgetView>) {
+    children.forEach { widget ->
+        if (widget.type == "banner") {
+            AsyncImage(
+                model = widget.data?.image,
+                contentDescription = null,
+                contentScale = ContentScale.FillWidth,
+                modifier = Modifier.fillMaxWidth()
+            )
         }
     }
 }
@@ -162,24 +192,27 @@ fun HomeBalanceWidgetView(children: List<WidgetView>) {
 @ExperimentalFoundationApi
 @ExperimentalLayoutApi
 @Composable
-fun IxfiOptionWidgetView(children: List<WidgetView>) {
+fun IxfiOptionWidgetView(children: List<WidgetView>, navController: NavHostController) {
     Row(
         horizontalArrangement = Arrangement.spacedBy(10.dp),
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 10.dp)
-            .aspectRatio(2.05f)
+            .aspectRatio(2f)
+            .debugBorder()
     ) {
+
         FlowRow(
             horizontalArrangement = Arrangement.spacedBy(10.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp),
             maxItemsInEachRow = 2,
             modifier = Modifier
                 .weight(1f)
+                .fillMaxHeight()
         ) {
             children.forEach { widget ->
                 when (widget.type) {
-                    "ixfi-options" -> CubeView(widget.data!!)
+                    "ixfi-options" -> CubeView(widget.data!!, navController)
                 }
             }
         }
@@ -237,14 +270,20 @@ fun RowScope.SpecialBanner(banners: List<Banner>) {
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun FlowRowScope.CubeView(data: WidgetData) {
+private fun FlowRowScope.CubeView(data: WidgetData, navController: NavHostController) {
+    val context = LocalContext.current
+
     Box(
         modifier = Modifier
+            .border(width = 1.dp, color = Color(0xffD8D8D8), shape = RoundedCornerShape(18.dp))
             .weight(1f)
             .aspectRatio(1f)
-            .border(width = 1.dp, color = Color(0xffD8D8D8), shape = RoundedCornerShape(18.dp))
             .clip(RoundedCornerShape(18.dp))
-            .clickable { }
+            .clickable {
+                data.action?.let {
+                    getRoute(context as Activity, it, navController)
+                }
+            }
     ) {
         AsyncImage(
             model = stringImage(data.image ?: ""),

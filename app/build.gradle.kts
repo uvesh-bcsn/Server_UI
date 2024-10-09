@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.serverui"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -75,4 +75,5 @@ dependencies {
     implementation(libs.coil.compose)
 
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.androidx.navigation.compose)
 }

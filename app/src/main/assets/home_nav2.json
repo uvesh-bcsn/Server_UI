@@ -1,0 +1,250 @@
+{
+  "type": "dashboard-content-view",
+  "data": {
+    "image": "https://cardex-static-assets-staging.s3.eu-central-1.amazonaws.com/firebase/bg.webp",
+    "bgcolor": [
+      "#FFFFFF"
+    ]
+  },
+  "children": [
+    {
+      "type": "banner-view",
+      "children": [
+        {
+          "type": "banner",
+          "data": {
+            "image": "https://cardex-static-assets-staging.s3.eu-central-1.amazonaws.com/firebase/strip.webp"
+          }
+        }
+      ]
+    },
+    {
+      "type": "home-balance-widget-view",
+      "children": [
+        {
+          "type": "home-balance",
+          "data": {
+            "text": "Wallet balance",
+            "balance": "$ 100",
+            "image": "ic_wallet_bal",
+            "bgcolor": [
+              "#ECE8FF"
+            ]
+          }
+        },
+        {
+          "type": "home-balance",
+          "data": {
+            "text": "IXFI Points",
+            "balance": "10",
+            "image": "ic_points_bal",
+            "bgcolor": [
+              "#ECE8FF"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "ixfi-option-widget-view",
+      "children": [
+        {
+          "type": "ixfi-options",
+          "data": {
+            "text": "Buy Crypto",
+            "image": "buy_crypto_home_icon",
+            "bgcolor": [
+              "#ECE8FF",
+              "#ECE8FF"
+            ],
+            "action": {
+              "screen": "BuyCrypto",
+              "args": {
+                "rewards": "param"
+              }
+            }
+          }
+        },
+        {
+          "type": "ixfi-options",
+          "data": {
+            "text": "Rewards",
+            "image": "rewards_home_icon",
+            "bgcolor": [
+              "#ECE8FF",
+              "#ECE8FF"
+            ],
+            "action": {
+              "screen": "Reward",
+              "args": {
+                "rewardID": 12,
+                "rewardName": "name1"
+              },
+              "action": {
+                "screen": "Airdrop",
+                "args": {
+                  "rewardID": 12,
+                  "rewardName": "name1"
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "ixfi-options",
+          "data": {
+            "text": "Convert",
+            "image": "convert_home_icon",
+            "bgcolor": [
+              "#ECE8FF",
+              "#ECE8FF"
+            ]
+          }
+        },
+        {
+          "type": "ixfi-options",
+          "data": {
+            "text": "Cards",
+            "image": "ixficard_home_icon",
+            "bgcolor": [
+              "#ECE8FF",
+              "#3461FF"
+            ]
+          }
+        },
+        {
+          "type": "special-banner",
+          "data": {
+            "bannerArray": [
+              {
+                "banner_url": "https://cardex-static-assets-staging.s3.eu-central-1.amazonaws.com/task-image/swipelux-banner-top2.webp",
+                "slug": "webview",
+                "webview_url": "https://www.ixfi.com/go/buy/?mobileApp=true",
+                "is_require_login": false,
+                "webview_title": "Buy Crypto",
+                "is_external_browser_redirect": false,
+                "is_android": true,
+                "is_ios": true
+              },
+              {
+                "banner_url": "https://cardex-static-assets-staging.s3.eu-central-1.amazonaws.com/task-image/step-banner-top1.webp",
+                "slug": "steps",
+                "webview_url": "https://points.zen-ex.com/mobile/steps",
+                "is_require_login": false,
+                "webview_title": "Steps Program",
+                "is_external_browser_redirect": false,
+                "is_android": true,
+                "is_ios": true
+              },
+              {
+                "banner_url": "https://cardex-static-assets-staging.s3.eu-central-1.amazonaws.com/task-image/airdrop-banner-top3.webp",
+                "slug": "webview",
+                "webview_url": "https://points.zen-ex.com/mobile/airdrop",
+                "is_require_login": false,
+                "webview_title": "ixfi Airdrop",
+                "is_external_browser_redirect": false,
+                "is_android": true,
+                "is_ios": true
+              },
+              {
+                "banner_url": "https://cardex-static-assets-staging.s3.eu-central-1.amazonaws.com/firebase/airdrop-banner-top4@2x.webp",
+                "slug": "webview",
+                "webview_url": "https://points.zen-ex.com/mobile/blockGame",
+                "is_require_login": true,
+                "webview_title": "BlockGames",
+                "is_external_browser_redirect": false,
+                "is_android": true,
+                "is_ios": true
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "navigation-widget-view",
+      "children": [
+        {
+          "type": "navigation-widget",
+          "data": {
+            "text": "Dashboard",
+            "image": "ic_dashboard_menu_new",
+            "bgcolor": [
+              "#F9F9F9"
+            ]
+          }
+        },
+        {
+          "type": "navigation-widget",
+          "data": {
+            "text": "Deposit",
+            "image": "img_deposit_money",
+            "bgcolor": [
+              "#F9F9F9"
+            ]
+          }
+        },
+        {
+          "type": "navigation-widget",
+          "data": {
+            "text": "Referral",
+            "image": "ic_referral_menu_new",
+            "bgcolor": [
+              "#F9F9F9"
+            ]
+          }
+        },
+        {
+          "type": "navigation-widget",
+          "data": {
+            "text": "Fee Structure",
+            "image": "ic_fee_structure_menu_new",
+            "bgcolor": [
+              "#F9F9F9"
+            ]
+          }
+        },
+        {
+          "type": "navigation-widget",
+          "data": {
+            "text": "Blog",
+            "image": "ic_blog_menu_new",
+            "bgcolor": [
+              "#F9F9F9"
+            ]
+          }
+        },
+        {
+          "type": "navigation-widget",
+          "data": {
+            "text": "News",
+            "image": "ic_news_menu_new",
+            "bgcolor": [
+              "#F9F9F9"
+            ]
+          }
+        },
+        {
+          "type": "navigation-widget",
+          "data": {
+            "text": "Help Center",
+            "image": "ic_help_center_menu",
+            "bgcolor": [
+              "#F9F9F9"
+            ]
+          }
+        },
+        {
+          "type": "navigation-widget",
+          "data": {
+            "text": "History",
+            "image": "ic_history_menu_new",
+            "bgcolor": [
+              "#F9F9F9"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

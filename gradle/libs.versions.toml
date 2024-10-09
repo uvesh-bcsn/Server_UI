@@ -12,6 +12,7 @@ googleGmsGoogleServices = "4.4.2"
 firebaseFirestore = "25.0.0"
 firebaseStorage = "21.0.0"
 kotlinxSerialization = "1.6.0" # Or the latest version
+navigationCompose = "2.8.0-rc01"
 
 
 [libraries]
@@ -35,7 +36,7 @@ coil_compose = { group = "io.coil-kt", name = "coil-compose", version = "2.7.0" 
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
 firebase-storage = { group = "com.google.firebase", name = "firebase-storage", version.ref = "firebaseStorage" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
-
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

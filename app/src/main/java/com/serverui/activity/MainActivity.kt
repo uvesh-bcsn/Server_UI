@@ -6,9 +6,12 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.material3.ExperimentalMaterial3Api
+import com.serverui.navigation.RootNavGraph
 import com.serverui.ui.screen.RootScreen
 import com.serverui.ui.theme.ServerUITheme
 
+@ExperimentalMaterial3Api
 @ExperimentalFoundationApi
 @ExperimentalLayoutApi
 class MainActivity : ComponentActivity() {
@@ -17,7 +20,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ServerUITheme {
-                RootScreen()
+                RootNavGraph()
             }
         }
     }

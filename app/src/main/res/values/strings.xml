@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Server UI</string>
+    <string name="title_activity_reward">Reward</string>
 </resources>
